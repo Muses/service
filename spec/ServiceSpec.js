@@ -1,35 +1,36 @@
 
 var assert = require('assert');
 var errors = require('muses-errors');
-var Method = require('../lib/Method');
-var Service = require('../lib/Service');
+var service = require('../lib/');
 
 describe('Service', function() {
 
   it('should be an function', function() {
-    expect(typeof Service).toEqual('function');
+    expect(typeof service.Service).toEqual('function');
   });
 
   it('should should require a name and methods', function() {
 
     var throwName = function() {
-      return new Service();
+      return new service.Service();
     };
 
     var throwMethods = function() {
-      return new Service('test');
+      return new service.Service('test');
     };
 
     var throwMethodsMember = function() {
-      return new Service('test', [ {} ]);
+      return new service.Service('test', [ {} ]);
     };
 
     var successObject = function() {
-      return new Service('test', {});
+      return new service.Service('test', {});
     };
 
     var successArray = function() {
-      return new Service('test', [ new Method('test', function() {}) ]);
+      return new service.Service('test', [
+        new service.Types.Method('test', function() {})
+      ]);
     };
 
     expect(throwName).toThrowError(assert.AssertionError, 'name must be a string');
