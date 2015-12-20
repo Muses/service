@@ -1,0 +1,19 @@
+{
+  "name": "muses-service",
+  "version": "0.0.1",
+  "description": "Muses Service",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "keywords": [
+    "Muses",
+    "Service"
+  ],
+  "author": "Rob Schley",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "muses-errors": "^1.0.0"
+  }
+}
