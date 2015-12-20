@@ -24,7 +24,12 @@ describe('Service', function() {
     };
 
     var successObject = function() {
-      return new service.Service('test', {});
+      return new service.Service('test', {
+        test: {
+          type: service.Types.Method,
+          impl: function() {}
+        }
+      });
     };
 
     var successArray = function() {
