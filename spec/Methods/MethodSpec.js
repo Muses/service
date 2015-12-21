@@ -1,7 +1,7 @@
 
 var assert = require('assert');
 var errors = require('muses-errors');
-var service = require('../lib/');
+var service = require('../../lib/');
 
 describe('Method', function() {
 
@@ -104,6 +104,28 @@ describe('Method', function() {
       method.options = optsWithName;
       expect(method.name).toEqual('renamed');
       expect(method.options.name).toBeUndefined(undefined);
+    });
+  });
+
+  describe('service', function() {
+
+    var method = new service.Methods.Method('test', function() {});
+    var svc = new service.Service('Service', []);
+
+    it('should be settable', function() {
+      method.service = svc;
+      expect(method.service).toBe(svc);
+    });
+
+    it('should be gettable', function() {
+      expect(method.service).toBe(svc);
+    });
+
+    it('should only allow a Service', function() {
+      var setNumber = function() {
+        method.service = 1;
+      };
+      expect(setNumber).toThrowError(assert.AssertionError, 'service must be an instance of Service');
     });
   });
 
