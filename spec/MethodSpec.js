@@ -6,26 +6,26 @@ var service = require('../lib/');
 describe('Method', function() {
 
   it('should be an function', function() {
-    expect(typeof service.Types.Method).toEqual('function');
+    expect(typeof service.Methods.Method).toEqual('function');
   });
 
   it('should have default options', function() {
-    expect(typeof service.Types.Method.defaultOptions).toEqual('function');
-    expect(typeof service.Types.Method.defaultOptions()).toEqual('object');
+    expect(typeof service.Methods.Method.defaultOptions).toEqual('function');
+    expect(typeof service.Methods.Method.defaultOptions()).toEqual('object');
   });
 
   it('should should require a name and an implementation', function() {
 
     var throwName = function() {
-      return new service.Types.Method();
+      return new service.Methods.Method();
     };
 
     var throwImplementation = function() {
-      return new service.Types.Method('test');
+      return new service.Methods.Method('test');
     };
 
     var success = function() {
-      return new service.Types.Method('test', function() {});
+      return new service.Methods.Method('test', function() {});
     };
 
     expect(throwName).toThrowError(assert.AssertionError, 'name must be a string');
@@ -35,7 +35,7 @@ describe('Method', function() {
 
   describe('name', function() {
 
-    var method = new service.Types.Method('test', function() {});
+    var method = new service.Methods.Method('test', function() {});
 
     it('should be gettable', function() {
       expect(method.name).toBe('test');
@@ -58,7 +58,7 @@ describe('Method', function() {
     var fnTruthy = function() { return true; };
     var fnFalsy = function() { return true; };
 
-    var method = new service.Types.Method('test', fnTruthy);
+    var method = new service.Methods.Method('test', fnTruthy);
 
     it('should be gettable', function() {
       expect(method.implementation).toBe(fnTruthy);
@@ -81,7 +81,7 @@ describe('Method', function() {
     var optsTruthy = { foo: true };
     var optsFalsy = { foo: false };
 
-    var method = new service.Types.Method('test', function() {}, optsTruthy);
+    var method = new service.Methods.Method('test', function() {}, optsTruthy);
 
     it('should be gettable', function() {
       expect(method.options).toEqual(optsTruthy);
@@ -110,7 +110,7 @@ describe('Method', function() {
   describe('invoke', function() {
 
     // Create an echo method.
-    var echo = new service.Types.Method(
+    var echo = new service.Methods.Method(
       'echo',
       function(text) {
         return text;
@@ -140,7 +140,7 @@ describe('Method', function() {
     it('should reject promise with NotFound error on null', function(done) {
 
       // Create a notFound method.
-      var notFound = new service.Types.Method(
+      var notFound = new service.Methods.Method(
         'notFound',
         function() {
           return null;
@@ -161,7 +161,7 @@ describe('Method', function() {
     it('should reject a promise on error', function(done) {
 
       // Create a reject method.
-      var reject = new service.Types.Method(
+      var reject = new service.Methods.Method(
         'reject',
         function() {
           throw new errors.Error('Nope');
@@ -182,7 +182,7 @@ describe('Method', function() {
     it('should pass on all arguments plus itself', function(done) {
 
       // Create a method to count it's arguments.
-      var counter = new service.Types.Method(
+      var counter = new service.Methods.Method(
         'counter',
         function() {
           return arguments.length;

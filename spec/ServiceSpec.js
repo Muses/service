@@ -26,7 +26,7 @@ describe('Service', function() {
     var successObject = function() {
       return new service.Service('test', {
         test: {
-          type: service.Types.Method,
+          type: service.Methods.Method,
           impl: function() {}
         }
       });
@@ -34,7 +34,7 @@ describe('Service', function() {
 
     var successArray = function() {
       return new service.Service('test', [
-        new service.Types.Method('test', function() {})
+        new service.Methods.Method('test', function() {})
       ]);
     };
 
