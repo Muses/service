@@ -159,6 +159,26 @@ describe('Method', function() {
         });
     });
 
+    it('should assimilate a returned promise', function(done) {
+
+      var double = new service.Methods.Method(
+        'double',
+        function(str) {
+          return Promise.resolve(str + str);
+        }
+      );
+
+      double
+        .invoke('foo')
+        .then(function(res) {
+          expect(res).toEqual('foofoo');
+          done();
+        })
+        .catch(function(error) {
+          done.fail('promise rejected');
+        });
+    })
+
     it('should reject promise with NotFound error on null', function(done) {
 
       // Create a notFound method.
