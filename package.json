@@ -1,10 +1,14 @@
 {
   "name": "muses-service",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Muses Service",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Muses/service.git"
   },
   "engines" : {
     "node" : "^5.0.0"
