@@ -126,7 +126,7 @@ describe('Method', function() {
         .catch(function(error) {
           done.fail('promise rejected');
         });
-    })
+    });
 
     it('should reject promise with NotFound error on null', function(done) {
 
