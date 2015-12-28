@@ -4,17 +4,17 @@
   "description": "Muses Service",
   "main": "lib/index.js",
   "scripts": {
-    "test": "jasmine"
+    "test": "istanbul cover --include-all-sources -x **/spec/** jasmine"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/Muses/service.git"
   },
   "bugs": {
-    "url" : "https://github.com/Muses/service/issues"
+    "url": "https://github.com/Muses/service/issues"
   },
-  "engines" : {
-    "node" : "^5.0.0"
+  "engines": {
+    "node": "^5.0.0"
   },
   "keywords": [
     "Muses",
@@ -25,5 +25,8 @@
   "dependencies": {
     "lodash": "^3.10.1",
     "muses-errors": "^1.0.0"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.1"
   }
 }
