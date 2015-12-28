@@ -14,4 +14,4 @@ Install the package using npm: `npm install muses-service`
 
 ## License
 
-See [LICENSE.md](LICENSE.md)
+MIT License. See [LICENSE.md](LICENSE.md)

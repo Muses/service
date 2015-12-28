@@ -1,3 +1,4 @@
+'use strict';
 
 var assert = require('assert');
 var errors = require('muses-errors');
@@ -74,58 +75,6 @@ describe('Method', function() {
         method.implementation = 1;
       };
       expect(setNumber).toThrowError(assert.AssertionError, 'implementation must be a function');
-    });
-  });
-
-  describe('options', function() {
-    var optsTruthy = { foo: true };
-    var optsFalsy = { foo: false };
-
-    var method = new service.Methods.Method('test', function() {}, optsTruthy);
-
-    it('should be gettable', function() {
-      expect(method.options).toEqual(optsTruthy);
-    });
-
-    it('should be settable', function() {
-      method.options = optsFalsy;
-      expect(method.options).toEqual(optsFalsy);
-    });
-
-    it('should only allow an object', function() {
-      var setNumber = function() {
-        method.options = 1;
-      };
-      expect(setNumber).toThrowError(assert.AssertionError, 'options must be an object');
-    });
-
-    it('should set method\'s own properties on method', function() {
-      var optsWithName = { name: 'renamed' };
-      method.options = optsWithName;
-      expect(method.name).toEqual('renamed');
-      expect(method.options.name).toBeUndefined(undefined);
-    });
-  });
-
-  describe('service', function() {
-
-    var method = new service.Methods.Method('test', function() {});
-    var svc = new service.Service('Service', []);
-
-    it('should be settable', function() {
-      method.service = svc;
-      expect(method.service).toBe(svc);
-    });
-
-    it('should be gettable', function() {
-      expect(method.service).toBe(svc);
-    });
-
-    it('should only allow a Service', function() {
-      var setNumber = function() {
-        method.service = 1;
-      };
-      expect(setNumber).toThrowError(assert.AssertionError, 'service must be an instance of Service');
     });
   });
 

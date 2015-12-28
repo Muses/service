@@ -10,6 +10,9 @@
     "type": "git",
     "url": "https://github.com/Muses/service.git"
   },
+  "bugs": {
+    "url" : "https://github.com/Muses/service/issues"
+  },
   "engines" : {
     "node" : "^5.0.0"
   },
